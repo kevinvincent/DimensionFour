@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser(description='Object Detection using YOLO in OPE
 parser.add_argument('--image', help='Path to image file.')
 parser.add_argument('--video', help='Path to video file.')
 args = parser.parse_args()
-        
+
 # Load names of classes
 classesFile = "yolo/coco.names"
 classes = None
@@ -28,7 +28,7 @@ with open(classesFile, 'rt') as f:
 
 # Give the configuration and weight files for the model and load the network using them.
 modelConfiguration = "yolo/yolov3.cfg"
-modelWeights = "yolo/lov3.weights"
+modelWeights = "yolo/yolov3.weights"
 
 net = cv.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
 net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
@@ -45,9 +45,9 @@ def getOutputsNames(net):
 def drawPred(classId, conf, left, top, right, bottom):
     # Draw a bounding box.
     cv.rectangle(frame, (left, top), (right, bottom), (255, 178, 50), 3)
-    
+
     label = '%.2f' % conf
-        
+
     # Get the label for the class name and its confidence
     if classes:
         assert(classId < len(classes))
@@ -125,10 +125,10 @@ if (not args.image):
     vid_writer = cv.VideoWriter(outputFile, cv.VideoWriter_fourcc('M','J','P','G'), 30, (round(cap.get(cv.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv.CAP_PROP_FRAME_HEIGHT))))
 
 while cv.waitKey(1) < 0:
-    
+
     # get frame from the video
     hasFrame, frame = cap.read()
-    
+
     # Stop the program if reached end of video
     if not hasFrame:
         print("Done processing !!!")
