@@ -3,7 +3,7 @@ import cv2
 import time
 import sys
 import statistics
-from pyimagesearch.centroidtracker import CentroidTracker
+from lib.centroidtracker import CentroidTracker
 
 OPTIONS = {
     "bgSegm" : "MOG2", # GSOC, MOG2
