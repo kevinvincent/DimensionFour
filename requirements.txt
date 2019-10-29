@@ -77,7 +77,7 @@ pyserial==2.7
 python-dateutil==1.5
 pytz==2013.7
 pyzmq==14.3.1
-requests==2.18.1
+requests==2.20.0
 requests-cache==0.4.5
 rethinkdb==1.11.0-2
 scipy==0.13.0b1
