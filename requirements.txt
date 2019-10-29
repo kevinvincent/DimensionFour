@@ -34,7 +34,7 @@ prawcore==0.11.0
 protobuf==2.5.0
 py2app==0.7.3
 pyFirmata==0.9.5
-pyOpenSSL==0.13.1
+pyOpenSSL==17.5.0
 pymeanshift==0.2.1
 pyobjc-core==2.5.1
 pyobjc-framework-Accounts==2.5.1
