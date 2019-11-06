@@ -28,7 +28,7 @@ python3 -m dimensionfour.preprocess --input dataset/1.mp4 --output video_1
 python3 -m dimensionfour.preprocess --input dataset/2.mp4 --output video_2
 ...
 ```
-The first time you run dimensionfour.preprocess, it will download the yolo model from dropbox.
+The first time you run dimensionfour.preprocess, it will download a pretrained yolov3 model from dropbox.
 Preprocessing will output a file called `<output>.d4artifact.zip` which contains metadata about your video
 
 3. Assemble your `.d4artifact.zip` files into a final video:
