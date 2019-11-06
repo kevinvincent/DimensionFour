@@ -9,7 +9,7 @@ from time import time
 
 import numpy as np
 from pykalman import KalmanFilter
-from lib.util import load_mot, iou, interp_tracks
+from dimensionfour.lib.util import load_mot, iou, interp_tracks
 
 def active_criteria(x, tracks):
     """

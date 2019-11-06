@@ -10,7 +10,7 @@ class Pipeline(object):
       self.start_time = time.time()
 
    def run(self):
-      for i in range(self.args.start, len(self.pipeline)):
+      for i in range(self.args.start or 0, len(self.pipeline)):
          print("[Pipeline] Starting %s" % self.pipeline[i].__name__)
          step = self.pipeline[i](self.args)
          step.execute()

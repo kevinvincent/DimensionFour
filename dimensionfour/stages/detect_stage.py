@@ -6,7 +6,7 @@ import json
 import numpy as np
 import subprocess
 
-from stages.base_stage import BaseStage
+from dimensionfour.stages.base_stage import BaseStage
 
 class DetectStage(BaseStage):
    def __init__(self, args):
@@ -35,6 +35,7 @@ class DetectStage(BaseStage):
 
    def execute(self):
 
+      frames = []
       while True:
 
          # get frame from the video
@@ -51,12 +52,19 @@ class DetectStage(BaseStage):
             print("[DetectStage] Frame %d: Detecting" % self.frameCounter)
             _, output_array = self.detector.detectObjectsFromImage(input_type="array", output_type="array", input_image=frame, minimum_percentage_probability=30)
             self.detections.append(output_array)
+            frames.append(frame)
          else:
             print("[DetectStage] Frame %d: Skipping" % self.frameCounter)
 
          self.frameCounter += 1
       
+      
       self.writeArtifact(self.detections, "DetectStage.out.json", cls=NpEncoder)
+
+      print("[DetectStage] Calculating median frame")
+      medianFrame = np.median(frames, axis=0).astype(dtype=np.uint8)   
+      cv2.imwrite(self.getArtifactPath("background_model.jpg"), medianFrame)
+      print("[DetectStage] Finished writing median frame")
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):

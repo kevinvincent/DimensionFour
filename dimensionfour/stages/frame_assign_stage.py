@@ -1,6 +1,6 @@
 import json
 
-from stages.base_stage import BaseStage
+from dimensionfour.stages.base_stage import BaseStage
 
 class FrameAssignStage(BaseStage):
    def __init__(self, args):
@@ -22,5 +22,7 @@ class FrameAssignStage(BaseStage):
                'name': detection["name"],
                'id': i
             })
-
+      
+      print("[FrameAssignStage] %d frame(s) assigned detections" % len(frameToDetections))
+      
       self.writeArtifact(frameToDetections, "FrameAssignStage.out.json")

@@ -5,7 +5,7 @@ import cv2
 import time
 import numpy as np
 
-from stages.base_stage import BaseStage
+from dimensionfour.stages.base_stage import BaseStage
 
 class VisualizeStage(BaseStage):
    def __init__(self, args):
@@ -18,7 +18,7 @@ class VisualizeStage(BaseStage):
       self.cap = cv2.VideoCapture(args.input)
 
       # Create Video Writer
-      self.vout = cv2.VideoWriter(args.output, cv2.VideoWriter_fourcc('M','J','P','G'),
+      self.vout = cv2.VideoWriter(self.getArtifactPath("visualization.avi"), cv2.VideoWriter_fourcc('M','J','P','G'),
          30, (round(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)),round(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
 
    def execute(self):
@@ -33,7 +33,7 @@ class VisualizeStage(BaseStage):
 
          # Stop the stage if reached end of video
          if not hasFrame:
-            print("[VisualizeStage] Done processing %d frame(s)." % (frameNum - 1))
+            print("[VisualizeStage] Done writing %d frame(s)." % (frameNum - 1))
             break
 
          if str(frameNum) in frameToDetections:
@@ -41,18 +41,12 @@ class VisualizeStage(BaseStage):
             for detection in detections:
                self.drawPred(frame, "%d - %s" % (detection["id"], detection["name"]) , detection["bbox"][0], detection["bbox"][1], detection["bbox"][2], detection["bbox"][3])
          
-         # cv2.imshow("Window", frame)
          self.vout.write(frame.astype(np.uint8))
-
-         # key = cv2.waitKey(1) #pauses for 3 seconds before fetching next image
-         # if key == 27:#if ESC is pressed, exit loop
-         #    break
 
          frameNum += 1
       
       self.cap.release()
       self.vout.release()
-      cv2.destroyAllWindows()
 
       
    def drawPred(self, frame, label, left, top, right, bottom):

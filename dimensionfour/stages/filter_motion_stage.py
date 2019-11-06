@@ -1,7 +1,7 @@
 import json
 import math
 
-from stages.base_stage import BaseStage
+from dimensionfour.stages.base_stage import BaseStage
 
 class FilterMotionStage(BaseStage):
    def __init__(self, args):
@@ -31,6 +31,6 @@ class FilterMotionStage(BaseStage):
          else:
             preserveCount += 1
 
-      print("[FilterMotionStage] Eliminated %d, Preserved %d" % (eliminationCount, preserveCount))
+      print("[FilterMotionStage] Eliminated %d tracks, Preserved %d tracks" % (eliminationCount, preserveCount))
 
       self.writeArtifact(tracks, "FilterMotionStage.out.json")
