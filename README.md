@@ -24,14 +24,14 @@ pipenv shell
 
 2. Preprocess your video files:
 
-Indivudally as:
+* Individally as:
 ```bash
 python3 -m dimensionfour.preprocess --input dataset/1.mp4
 python3 -m dimensionfour.preprocess --input dataset/2.mp4
 ...
 ```
 
-Or in bulk as:
+* Or in bulk as:
 ```bash
 python3 -m dimensionfour.preprocess --input dataset/*
 ```
