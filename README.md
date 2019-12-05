@@ -47,12 +47,12 @@ This will output a summarized video of all d4artifacts in the current directory 
 #### Options
 You can filter the summarized video to only include certain object classes using the `--filter` option:
 ```bash
-python3 -m dimensionfour.assemble --input video_1.d4artifact.zip video_2.d4artifact.zip --output summary.avi --filter person
+python3 -m dimensionfour.assemble --input *.d4artifact.zip --output summary.avi --filter person
 ```
 
 You can set the fps of the output using the `--fps` option:
 ```bash
-python3 -m dimensionfour.assemble --input video_1.d4artifact.zip video_2.d4artifact.zip --output summary.avi --fps 10
+python3 -m dimensionfour.assemble --input *.d4artifact.zip --output summary.avi --fps 10
 ```
 
 
