@@ -54,7 +54,7 @@ class AssembleStage(BaseStage):
 
             if vout == None:
                vout = cv2.VideoWriter(self.args.output, cv2.VideoWriter_fourcc('M','J','P','G'),
-         30, (round(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
+         self.args.fps, (round(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
 
 
          print("[AssembleStage] Output video length: %d" % maxLength)
