@@ -10,7 +10,7 @@ opencv-contrib-python = "*"
 imageai = "*"
 pykalman = "*"
 keras = "*"
-tensorflow = "~=1.4"
+tensorflow = "~=2.5"
 
 [requires]
 python_version = "3.7"
